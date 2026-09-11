@@ -7,11 +7,11 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-function translateRövarspråk(word) {
+function translateRövarspråk(input) {
   const vowels = "aeiouyåäö";
-  const result = "";
-  for (const char of word) {
-    const isLetter = char;
+  let result = '';
+  for (const char of input) {
+    const isLetter = char.toLowerCase();
     const isVowel = vowels.includes(char);
     if (isLetter && !isVowel) {
       result += char + "o" + char;
@@ -22,4 +22,12 @@ function translateRövarspråk(word) {
   return result;
 }
 
-rl.question("Skriv ett ord: ", (word) => {});
+function main() {
+rl.question("Skriv ett ord: ", (input) => {
+  const translated = translateRövarspråk(input);
+  console.log(`${translated}`);
+  rl.close();
+  });
+}
+
+main();
